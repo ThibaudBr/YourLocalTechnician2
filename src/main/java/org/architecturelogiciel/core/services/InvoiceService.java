@@ -17,10 +17,11 @@ import org.architecturelogiciel.core.validator.UpdateInvoiceValidator;
 import java.util.List;
 
 public class InvoiceService extends Service<Invoice> {
-    private final InvoiceRepository invoiceRepository = new InvoiceRepository();
+    private final InvoiceRepository invoiceRepository;
 
     public InvoiceService(APIClient client) {
         super(Invoice.class, client);
+        this.invoiceRepository = client.getInvoiceRepository();
     }
 
     public List<Invoice> getInvoicesUser(User user){

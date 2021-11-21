@@ -19,7 +19,7 @@ public class AuthService extends Service<User>{
 
     public AuthService(APIClient apiClient) {
         super(User.class, apiClient);
-        this.userRepository = apiClient.getUsersService().getUserRepository();
+        this.userRepository = apiClient.getUserRepository();
     }
 
     public User login(LoginRequest loginRequest) throws WrongPasswordExeception, InvalidParameterException {

@@ -11,10 +11,11 @@ import org.architecturelogiciel.core.validator.UpdateUserValidator;
 import java.util.List;
 
 public class UsersService extends Service<User> {
-    private final UserRepository userRepository = new UserRepository();
+    private final UserRepository userRepository;
 
     public UsersService(APIClient apiClient) {
         super(User.class, apiClient);
+        this.userRepository = apiClient.getUserRepository();
     }
 
     public UserRepository getUserRepository() {

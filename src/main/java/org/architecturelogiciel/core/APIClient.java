@@ -1,6 +1,8 @@
 package org.architecturelogiciel.core;
 
 import org.architecturelogiciel.core.models.User;
+import org.architecturelogiciel.core.repository.InvoiceRepository;
+import org.architecturelogiciel.core.repository.UserRepository;
 import org.architecturelogiciel.core.requests.LoginRequest;
 import org.architecturelogiciel.core.requests.SubscribeRequest;
 import org.architecturelogiciel.core.services.AuthService;
@@ -12,13 +14,17 @@ public class APIClient {
     private final AuthService authService;
     private final UsersService usersService;
     private final InvoiceService invoiceService;
+    private final UserRepository userRepository;
+    private final InvoiceRepository invoiceRepository;
     private User user;
 
     public APIClient() {
 
+        userRepository = new UserRepository();
+        invoiceRepository = new InvoiceRepository();
+        invoiceService = new InvoiceService(this);
         authService = new AuthService(this);
         usersService = new UsersService(this);
-        invoiceService = new InvoiceService(this);
     }
 
     public void connect(LoginRequest loginRequest){
@@ -47,5 +53,13 @@ public class APIClient {
 
     public InvoiceService getInvoiceService() {
         return invoiceService;
+    }
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public InvoiceRepository getInvoiceRepository() {
+        return invoiceRepository;
     }
 }
