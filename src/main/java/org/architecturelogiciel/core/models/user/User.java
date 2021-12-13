@@ -1,24 +1,32 @@
-package org.architecturelogiciel.core.models;
+package org.architecturelogiciel.core.models.user;
 
-import static org.architecturelogiciel.core.models.UserType.CONTRACTOR;
-import static org.architecturelogiciel.core.models.UserType.TRADESMAN;
+import org.architecturelogiciel.core.validator.ValidationUserEngine;
 
-public class User extends Entity{
+import static org.architecturelogiciel.core.models.user.UserType.CONTRACTOR;
+import static org.architecturelogiciel.core.models.user.UserType.TRADESMAN;
 
+public final class User {
+
+    private UserId userId;
     private String username;
     private String mail;
     private String password;
     private UserType userType;
 
-    public User(String username, String mail, String password, UserType userType) {
-        super();
+    private User(UserId userId, String username, String mail, String password, UserType userType) {
+        this.userId = userId;
         this.username = username;
         this.mail = mail;
         this.password = password;
         this.userType = userType;
     }
 
-    public User() {
+    public static User of(UserId userId, String username, String password, String mail, UserType userType) {
+        User user = new User(userId, username, mail, password, userType);
+        if (ValidationUserEngine.getInstance().test(user)){
+            return user;
+        }
+        throw new IllegalArgumentException("The user fields are not valid.");
     }
 
     public String getUsername() {
@@ -59,5 +67,13 @@ public class User extends Entity{
 
     public boolean isTradesman(){
         return this.userType == TRADESMAN;
+    }
+
+    public UserId getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UserId userId) {
+        this.userId = userId;
     }
 }
