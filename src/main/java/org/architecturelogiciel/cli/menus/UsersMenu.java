@@ -2,7 +2,7 @@ package org.architecturelogiciel.cli.menus;
 
 import org.architecturelogiciel.cli.CLILauncher;
 import org.architecturelogiciel.cli.menus.list.UserListSelectionMenu;
-import org.architecturelogiciel.core.models.User;
+import org.architecturelogiciel.core.domain.entities.user.User;
 
 public class UsersMenu extends Menu {
     public UsersMenu(CLILauncher launcher) {

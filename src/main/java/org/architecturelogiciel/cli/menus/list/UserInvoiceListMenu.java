@@ -3,8 +3,8 @@ package org.architecturelogiciel.cli.menus.list;
 import org.architecturelogiciel.cli.CLILauncher;
 import org.architecturelogiciel.cli.menus.*;
 import org.architecturelogiciel.cli.menus.forms.CreateInvoiceForm;
-import org.architecturelogiciel.core.models.Invoice;
-import org.architecturelogiciel.core.models.User;
+import org.architecturelogiciel.core.domain.entities.invoice.Invoice;
+import org.architecturelogiciel.core.domain.entities.user.User;
 
 public class UserInvoiceListMenu extends Menu {
     public UserInvoiceListMenu(CLILauncher launcher, User user) {

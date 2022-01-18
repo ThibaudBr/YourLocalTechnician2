@@ -2,9 +2,9 @@ package org.architecturelogiciel.cli.menus;
 
 import org.architecturelogiciel.cli.CLILauncher;
 import org.architecturelogiciel.cli.menus.list.UserInvoiceListMenu;
-import org.architecturelogiciel.core.models.Invoice;
-import org.architecturelogiciel.core.models.User;
-import org.architecturelogiciel.core.requests.UpdateInvoiceStatusRequest;
+import org.architecturelogiciel.core.domain.entities.invoice.Invoice;
+import org.architecturelogiciel.core.domain.entities.user.User;
+import org.architecturelogiciel.core.application.requests.invoice.UpdateInvoiceStatusRequest;
 
 public class InvoiceInformationMenu extends Menu {
     public InvoiceInformationMenu(CLILauncher launcher, User user, Invoice invoice) {
@@ -16,7 +16,7 @@ public class InvoiceInformationMenu extends Menu {
                 @Override
                 public void execute() {
                     // La logique de payment sera appelé ici
-                    launcher.getClient().getInvoiceService().updateStatus(new UpdateInvoiceStatusRequest(invoice.getId(), true));
+                    launcher.getClient().getInvoiceService().updateStatus(UpdateInvoiceStatusRequest.of(invoice.getId(), true));
                     launcher.setActiveMenu(new InvoiceInformationMenu(launcher, user, invoice));
                 }
             });
@@ -27,7 +27,7 @@ public class InvoiceInformationMenu extends Menu {
             addAction(new Action("Changer le status ") {
                 @Override
                 public void execute() {
-                    launcher.getClient().getInvoiceService().updateStatus(new UpdateInvoiceStatusRequest(invoice.getId(), !invoice.getStatus()));
+                    launcher.getClient().getInvoiceService().updateStatus(UpdateInvoiceStatusRequest.of(invoice.getId(), !invoice.getStatus()));
                     launcher.setActiveMenu(new UserInvoiceListMenu(launcher, user));
                 }
             });

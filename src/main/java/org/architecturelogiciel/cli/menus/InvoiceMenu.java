@@ -2,8 +2,7 @@ package org.architecturelogiciel.cli.menus;
 
 import org.architecturelogiciel.cli.CLILauncher;
 import org.architecturelogiciel.cli.menus.list.UserInvoiceListMenu;
-import org.architecturelogiciel.core.models.Invoice;
-import org.architecturelogiciel.core.models.User;
+import org.architecturelogiciel.core.domain.entities.user.User;
 
 public class InvoiceMenu extends Menu {
     public InvoiceMenu(CLILauncher launcher, User user) {

@@ -1,7 +1,7 @@
 package org.architecturelogiciel.cli.menus.list;
 
 import org.architecturelogiciel.cli.CLILauncher;
-import org.architecturelogiciel.core.models.User;
+import org.architecturelogiciel.core.domain.entities.user.User;
 
 import java.util.List;
 

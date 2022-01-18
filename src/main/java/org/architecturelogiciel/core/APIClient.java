@@ -1,27 +1,27 @@
 package org.architecturelogiciel.core;
 
-import org.architecturelogiciel.core.models.User;
-import org.architecturelogiciel.core.repository.InvoiceRepository;
-import org.architecturelogiciel.core.repository.UserRepository;
-import org.architecturelogiciel.core.requests.LoginRequest;
-import org.architecturelogiciel.core.requests.SubscribeRequest;
-import org.architecturelogiciel.core.services.AuthService;
-import org.architecturelogiciel.core.services.InvoiceService;
-import org.architecturelogiciel.core.services.UsersService;
+import org.architecturelogiciel.core.domain.entities.user.User;
+import org.architecturelogiciel.core.infrastructure.persistence.InvoiceLocalRepository;
+import org.architecturelogiciel.core.infrastructure.persistence.UserLocalRepository;
+import org.architecturelogiciel.core.application.requests.user.LoginRequest;
+import org.architecturelogiciel.core.application.requests.user.SubscribeRequest;
+import org.architecturelogiciel.core.domain.services.AuthService;
+import org.architecturelogiciel.core.domain.services.InvoiceService;
+import org.architecturelogiciel.core.domain.services.UsersService;
 
 public class APIClient {
 
     private final AuthService authService;
     private final UsersService usersService;
     private final InvoiceService invoiceService;
-    private final UserRepository userRepository;
-    private final InvoiceRepository invoiceRepository;
+    private final UserLocalRepository userLocalRepository;
+    private final InvoiceLocalRepository invoiceLocalRepository;
     private User user;
 
     public APIClient() {
 
-        userRepository = new UserRepository();
-        invoiceRepository = new InvoiceRepository();
+        userLocalRepository = new UserLocalRepository();
+        invoiceLocalRepository = new InvoiceLocalRepository();
         invoiceService = new InvoiceService(this);
         authService = new AuthService(this);
         usersService = new UsersService(this);
@@ -55,11 +55,11 @@ public class APIClient {
         return invoiceService;
     }
 
-    public UserRepository getUserRepository() {
-        return userRepository;
+    public UserLocalRepository getUserRepository() {
+        return userLocalRepository;
     }
 
-    public InvoiceRepository getInvoiceRepository() {
-        return invoiceRepository;
+    public InvoiceLocalRepository getInvoiceRepository() {
+        return invoiceLocalRepository;
     }
 }

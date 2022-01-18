@@ -1,7 +1,7 @@
 ##YourLocalTechnician
 #Projet réaliser par BRIAND Thibaud
 
-Projet CC1 Architecture de logiciel
+Projet CC1 et CC2 Architecture de logiciel
 
 L'application s'utilise via le cmd. 
 Le stockage de données est simplement des list d'user et d'invoice se trouvant dans les class repository.
@@ -23,5 +23,5 @@ Les listSelectionMenu suivent la même logique que les actions en allant cherche
 permettent de sélectionner des entity.
 
 
-PS: Il n'y à pas de tests car je me suis laissé avoir par la date de rendu que je pensais le 21/11/2021
-à 23h59 et non a 00h00 et je comptatis poser des question lors du cours a ce sujet.
+CQS:
+https://www.dotnetcurry.com/patterns-practices/1461/command-query-separation-cqs
